@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenChain Blog DApp</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+    h1 { text-align: center; }
+    button { padding: 10px 15px; background: #4CAF50; color: white; border: none; cursor: pointer; border-radius: 5px; }
+    button:hover { background: #45a049; }
+    .post { border-bottom: 1px solid #ddd; padding: 10px 0; }
+    .wallet { margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ZenChain Blog DApp</h1>
+    <div class="wallet">
+      <button onclick="connectWallet()">Connect Wallet</button>
+      <p id="walletAddress">Wallet: Not connected</p>
+    </div><h2>Latest Posts</h2>
+<div class="post">
+  <h3>How I Built My First NFT DApp</h3>
+  <p>Using ZenChain testnet, MetaMask, and IPFS. Full code on GitHub!</p>
+  <a href="https://zafransszzz.github.io/web3-clone/" target="_blank">View DApp</a>
+</div>
+
+<div class="post">
+  <h3>What is ZenChain?</h3>
+  <p>A fast, scalable blockchain built for Web3 creators. Great for beginners!</p>
+  <a href="https://docs.zenchain.io/" target="_blank">Read Docs</a>
+</div>
+
+  </div>  <script>
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          document.getElementById('walletAddress').innerText = 'Wallet: ' + accounts[0];
+        } catch (err) {
+          alert('Connection denied.');
+        }
+      } else {
+        alert('MetaMask not found. Please install it.');
+      }
+    }
+  </script></body>
+</html>
